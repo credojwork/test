@@ -1,0 +1,336 @@
+<head>
+        <meta name="author" content="Click IT">
+        <meta name="description" content="">
+        <meta http-equiv="Content-Type"content="text/html;charset=UTF-8"/>
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+            <title>Click IT : <?php echo $template['title']; ?></title>
+            <?php $asset_url = str_replace('index.php', '', base_url()); ?>
+    
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/flat-admin.css">
+    
+        <!-- Theme -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/theme/blue-sky.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/jquery.timepicker.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/theme/blue.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/theme/red.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/theme/yellow.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $asset_url; ?>/assets/css/chosen.css">
+    
+     <script src="//code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    
+    </head>
+    <body>
+        <div class="app app-default">
+            <aside class="app-sidebar" id="sidebar">    
+                <div class="sidebar-menu">
+                    <ul class="sidebar-nav">
+                        <li> <a href="<?php echo base_url('dashboard'); ?>">
+                                <div class="icon"> <i class="fa fa-dashboard" aria-hidden="true"></i> </div>
+                                <div class="title">Dashboard</div>
+                            </a> 
+                        </li>
+                        <?php if ($this->session->userdata('is_admin') == '1') { ?>
+                            <li> <a href="<?php echo base_url('user/manageuser'); ?>">
+                                    <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                    <div class="title">Manage User</div>
+                                </a> 
+                            </li>
+                            <li> <a href="<?php echo base_url('supplier/managesupplier'); ?>">
+                                    <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                    <div class="title">Manage Supplier</div>
+                                </a> 
+                            </li>
+                        <?php } ?>
+                        <?php if ($this->session->userdata('is_admin') == '0') { ?>
+                            <li> <a href="<?php echo base_url('setting/apisetting'); ?>">
+                                    <div class="icon"> <i class="fa fa-gear" aria-hidden="true"></i> </div>
+                                    <div class="title">API Settings</div>
+                                </a> 
+                            </li>
+                            <li> <a href="<?php echo base_url('setting/dbsetting'); ?>">
+                                    <div class="icon"> <i class="fa fa-database" aria-hidden="true"></i> </div>
+                                    <div class="title">Database Settings</div>
+                                </a> 
+                            </li>
+                            <li> <a href="<?php echo base_url('setting/feedsetting'); ?>">
+                                    <div class="icon"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> </div>
+                                    <div class="title">Feed Settings</div>
+                                </a> 
+                            </li>
+                            <li> 
+    
+                                <div class="title">TRADE-ME</div>
+                                <ul class="sidebar-nav">
+                                    <li> <a href="<?php echo base_url('tmapi/apisetting'); ?>">
+                                            <div class="icon"> <i class="fa fa-gavel" aria-hidden="true"></i> </div>
+                                            <div class="title">TM API Settings</div>
+                                        </a> 
+                                    </li>
+                                    <li> <a href="<?php echo base_url('shipping/manageshipping'); ?>">
+                                            <div class="icon"> <i class="fa fa-truck" aria-hidden="true"></i> </div>
+                                            <div class="title">Manage Shipping</div>
+                                        </a> 
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/getSoldItem'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Sold Item</div>
+                                        </a>
+                                    </li>
+                                     <li> <a href="<?php echo base_url('trademe/unansweredQuestion'); ?>">
+                                            <div class="icon"> <i class="fa fa-comment-o" aria-hidden="true"></i> </div>
+                                            <div class="title">Unanswered Query</div>
+                                        </a> 
+                                    </li>
+                                    
+                                     <li> <a href="<?php echo base_url('tmapi/productnote'); ?>">
+                                            <div class="icon"> <i class="fa fa-sticky-note-o" aria-hidden="true"></i> </div>
+                                            <div class="title">TM Product Note</div>
+                                        </a> 
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/mapcategory'); ?>">
+                                            <div class="icon"> <i class="	fa fa-map-marker" aria-hidden="true"></i> </div>
+                                            <div class="title">Unmapped Product</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/mapped'); ?>">
+                                            <div class="icon"> <i class="fa fa-random" aria-hidden="true"></i> </div>
+                                            <div class="title">Mapped Product</div>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="<?php echo base_url('trademe/addproduct'); ?>">
+                                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                                            <div class="title">ADD PRODUCT</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/withdrawtm'); ?>">
+                                            <div class="icon"> <i class="	fa fa-lemon-o" aria-hidden="true"></i> </div>
+                                            <div class="title">Withdraw Product</div>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="<?php echo base_url('trademe/manualwithdraw'); ?>">
+                                            <div class="icon"> <i class="	fa fa-lemon-o" aria-hidden="true"></i> </div>
+                                            <div class="title">Manual Withdraw</div>
+                                        </a>
+                                    </li>
+                                    
+                                     <li>
+                                        <a href="<?php echo base_url('trademe/getExpired'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Get Expired</div>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="<?php echo base_url('trademe/updatetm'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Update Product</div>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="<?php echo base_url('trademe/listed'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Listed Product</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/expiredProduct'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Expired Product</div>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="<?php echo base_url('trademe/withdrawlproduct'); ?>">
+                                            <div class="icon"> <i class="fa fa-user" aria-hidden="true"></i> </div>
+                                            <div class="title">Withdrawn Product</div>
+                                        </a>
+                                    </li>
+                                    
+    
+    
+                                </ul>
+    
+    
+                            </li>
+    
+    
+    
+                        <?php } ?>
+                    </ul>
+    
+    
+                </div>
+    
+            </aside>   
+            <div class="app-container">
+                <nav class="navbar navbar-default" id="navbar">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse collapse in">
+                            <ul class="nav navbar-nav navbar-mobile">
+                                <li>
+                                    <button type="button" class="sidebar-toggle"> <i class="fa fa-bars"></i> </button>
+                                </li>
+                                <li class="logo"> <a class="navbar-brand" href="#">
+                                        Click IT : e-Commerce</a> </li>
+                                <li>
+                                    <button type="button" class="navbar-toggle">
+    
+                                        <img class="profile-img" src="<?php echo $asset_url; ?>/assets/images/profile.png">
+    
+    
+                                    </button>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-left">
+                                <li class="navbar-title">Click IT : e-Commerce</li>
+    
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown profile"> <a href="profile.php" class="dropdown-toggle" data-toggle="dropdown">             
+                                        <img class="profile-img" src="<?php echo $asset_url; ?>/assets/images/profile.png">
+    
+                                        <div class="title">Profile</div>
+                                    </a>
+                                    <div class="dropdown-menu">
+    
+                                        <ul class="action">
+                                            <li><a href="profile.php">Profile</a></li>                  
+                                            <li><a href="<?php echo base_url('user/logout'); ?>">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+    
+                <!-- Content Wrapper. Contains page content -->
+                <?php echo $template['body']; ?>
+                <!-- /.content-wrapper -->
+    
+    
+    
+    
+                <footer class="app-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="footer-copyright">Copyright © <?php echo date('Y'); ?> <a href="http://click-it.nz" target="_blank">Click IT</a>. All Rights Reserved.</div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    
+    
+       
+        <script type="text/javascript" src="<?php echo $asset_url; ?>/assets/js/vendor.js"></script> 
+    
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="<?php echo $asset_url; ?>/assets/js/app.js"></script>
+        <script src="<?php echo $asset_url; ?>/assets/ckeditor/ckeditor.js"></script>
+        <script src="<?php echo $asset_url; ?>/assets/js/jquery.timepicker.js"></script>
+    
+        <script src="<?php echo $asset_url; ?>/assets/js/chosen.jquery.js" type="text/javascript"></script>
+    
+        <script src="<?php echo $asset_url; ?>/assets/js/init.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            $('document').ready(function () {
+                $('.datepicker').datepicker(
+                        {dateFormat: 'yy-mm-dd'}
+                );
+                $('.timepicker').timepicker();
+            })
+        </script>
+    
+        <script>
+            $("body").on('change', '.feedselect', function () {
+                divid = $(this).parent('span').parent('div').attr('id');
+                $('#' + divid).append('<div id="loading">Saving...</div>');
+                cat_id = $(this).parent('span').attr('id');
+                if (!cat_id) {
+                    cat_id = 0;
+                }
+                value = this.value;
+                $.ajax({
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>/setting/updatecategory",
+                    data: {old_category: cat_id, rowid: divid, category_id: this.value}
+                }).done(function (msg) {
+                    $('#loading').remove();
+                    $('#' + divid).html(msg);
+    
+                });
+    
+            });
+    
+            $("body").on('click', '.cat_class', function () {
+    
+    
+                divid = $(this).parent('div').attr('id');
+                cat_id = $(this).attr('id');
+    
+                $('#' + divid+' #' + cat_id).removeClass('cat_class');
+                $('#' + divid+' #' + cat_id).unbind("click");
+                $('#' + divid).append('<div id="loading">loading...</div>');
+                $.ajax({
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>/setting/appendselect",
+                    data: {category_id: cat_id, div_id: divid}
+                }).done(function (msg) {
+                    $('#loading').remove();
+                    $('#' + divid+' #' + cat_id).html(msg);
+    
+    
+    
+                });
+    
+    
+    
+    
+            });
+    
+            $('.addcatmap').click(function () {
+                divid = $(this).attr('id');
+                cat_id = '';
+                feeddiv = divid.replace("add_", "feed_");
+                $('#' + feeddiv).append('<div id="loading">Adding...</div>');
+                $.ajax({
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>/setting/appendselect",
+                    data: {category_id: cat_id, div_id: divid}
+    
+                }).done(function (msg) {
+                    $('#loading').remove();
+                    $('#' + feeddiv).append('<span>' + msg + '</span>');
+    
+                });
+            });
+    
+            function updateMargin(id, value) {
+    
+    
+                $.ajax({
+                    method: "POST",
+                    url: "<?php echo base_url(); ?>/setting/updatemargin",
+                    data: {margin: value, div_id: id}
+    
+                }).done(function (msg) {
+                    alert(msg);
+    
+    
+                });
+            }
+        </script>
+    </body>
+    </html>
+    
+    
